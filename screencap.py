@@ -1,16 +1,23 @@
 import os
 import datetime
-import shutil
 import sys
 from PIL import ImageGrab
 
+def check_input():
+    if len(sys.argv) < 2:
+        sys.exit("引数が足りません")
+
+    if not os.path.isdir(sys.argv[1]):
+        sys.exit("指定のディレクトリは存在しません")
+
+
 today = datetime.datetime.now().strftime('%Y-%m-%d')
-today_file = 'ScreenCapture_' + today
-now = datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
+file_name = datetime.datetime.now().strftime('%Y-%m-%d_%H%M%S') + '.png'
 
-today_file = 'ScreenCapture_' + today
+check_input()
+save_path = sys.argv[1] + '/' + 'ScreenCapture_' + today
 
-if not os.path.exists(today_file):
-    os.mkdir(today_file)
+if not os.path.exists(save_path):
+    os.mkdir(save_path)
 
-ImageGrab.grab().save(today_file + '/' + now + '.png')
+ImageGrab.grab().save(save_path + '/' + file_name)
