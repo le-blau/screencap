@@ -1,16 +1,16 @@
 import os
 import datetime
 import shutil
+import sys
+from PIL import ImageGrab
 
-now = datetime.datetime.now()
-today = str(now.year)+'-'+str(now.month)+'-'+str(now.day)
+today = datetime.datetime.now().strftime('%Y-%m-%d')
+today_file = 'ScreenCapture_' + today
+now = datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
 
-newfilepath = r'C:\\Users\\dfunai\\Pictures\\画面キャプチャ\\'+ today
-print('生成されたフォルダ：' + newfilepath)
+today_file = 'ScreenCapture_' + today
 
-filepath = r'C:\\Users\\dfunai\\Pictures\\画面キャプチャ\\tmp'
-shutil.move(filepath, newfilepath)
-print('移動しました')
+if not os.path.exists(today_file):
+    os.mkdir(today_file)
 
-os.mkdir(filepath)
-print('生成されたフォルダ２：' + filepath)
+ImageGrab.grab().save(today_file + '/' + now + '.png')
