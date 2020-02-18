@@ -5,7 +5,7 @@ from PIL import ImageGrab
 
 def check_input():
     if len(sys.argv) < 2:
-        sys.exit("引数が足りません")
+        sys.exit("引数が足りません。第一引数：キャプチャ保存先パス")
 
     if not os.path.isdir(sys.argv[1]):
         sys.exit("指定のディレクトリは存在しません")
