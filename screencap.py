@@ -15,7 +15,7 @@ today = datetime.datetime.now().strftime('%Y-%m-%d')
 file_name = datetime.datetime.now().strftime('%Y-%m-%d_%H%M%S') + '.png'
 
 check_input()
-# 第1引数に保存先はディレクトリを指定
+# 第1引数に保存先のディレクトリを指定
 save_path = sys.argv[1] + '/' + 'ScreenCapture_' + today
 
 if not os.path.exists(save_path):
